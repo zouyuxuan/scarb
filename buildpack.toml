@@ -8,7 +8,7 @@ id = "amp-buildpacks/scarb"
 keywords = ["cairo", "scarb"]
 name = "AMP Buildpack for Scarb"
 sbom-formats = ["application/vnd.cyclonedx+json", "application/vnd.syft+json"]
-version = "0.1.0"
+version = "{{.version}}"
 
 [[buildpack.licenses]]
 type = "Apache-2.0"
@@ -41,7 +41,7 @@ id = "scarb-musl"
 name = "Scarb (musl libc)"
 purl = "pkg:generic/scarb@2.4.3"
 sha256 = "0c80edd932b21308fd024a2474f2db4647c25124557737fa0facfd902fd39f53"
-stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
+stacks = ["*"]
 uri = "https://github.com/software-mansion/scarb/releases/download/v2.4.3/scarb-v2.4.3-x86_64-unknown-linux-musl.tar.gz"
 version = "2.4.3"
 
@@ -50,7 +50,7 @@ id = "scarb-gnu"
 name = "Scarb (gnu libc)"
 purl = "pkg:generic/scarb@2.4.3"
 sha256 = "bae801283f7fa3822079f86fbccc882f557e316305ee0ea01c8867796db52d3c"
-stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
+stacks = ["*"]
 uri = "https://github.com/software-mansion/scarb/releases/download/v2.4.3/scarb-v2.4.3-x86_64-unknown-linux-gnu.tar.gz"
 version = "2.4.3"
 

@@ -60,13 +60,11 @@ func (s Scarb) Contribute(layer libcnb.Layer) (libcnb.Layer, error) {
 			return libcnb.Layer{}, fmt.Errorf("unable to expand %s\n%w", artifact.Name(), err)
 		}
 
-		s.Logger.Bodyf("Setting %s as executable", bin)
 		file := filepath.Join(bin, "scarb")
 		if err := os.Chmod(file, 0755); err != nil {
 			return libcnb.Layer{}, fmt.Errorf("unable to chmod %s\n%w", file, err)
 		}
 
-		s.Logger.Bodyf("Setting %s in PATH", layer.Path)
 		if err := os.Setenv("PATH", sherpa.AppendToEnvVar("PATH", ":", bin)); err != nil {
 			return libcnb.Layer{}, fmt.Errorf("unable to set $PATH\n%w", err)
 		}
@@ -112,14 +110,13 @@ func (s Scarb) Name() string {
 }
 
 func (s Scarb) BuildProcessTypes(runEnable string) ([]libcnb.Process, error) {
-	processes := []libcnb.Process{}
-
+	var processes []libcnb.Process
 	if runEnable == "true" {
+		args := []string{"build"}
 		processes = append(processes, libcnb.Process{
 			Type:      "web",
-			Command:   "scarb cairo-run ",
-			Arguments: []string{},
-			Default:   true,
+			Command:   "scarb",
+			Arguments: args,
 		})
 	}
 	return processes, nil

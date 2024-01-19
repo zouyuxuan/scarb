@@ -2,7 +2,15 @@
 
 A Cloud Native Buildpack for scarb
 
-## Usage
+## Configuration
+
+| Environment Variable     | Description                                                                                                                                                                                                                                                                                     |
+|--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `$BP_SCARB_VERSION`        | Configure the version of Scarb to install. It can be a specific version or a wildcard like `2.4.3`. It defaults to the latest `2.*` version.                                                                                                                                                    |
+| `$BP_SCARB_LIBC`         | Configure the libc implementation used by the installed toolchain. Available options: `gnu` or `musl`. Defaults to `gnu` for compatiblity. You do not need to set this option with the Paketo full/base/tiny/static stacks. It can be used for compatibility with more exotic or custom stacks. |
+| `$BP_ENABLE_SCARB_PROCESS` | Configure the Scarb launch process, default: `false`. Set to `true` means execute the `scarb run` command.                                                                                                                                                                                      |
+
+Usage
 
 ### 1. To use this buildpack, simply run:
 
